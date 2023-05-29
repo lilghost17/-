@@ -1,7 +1,16 @@
-let str = "1: 2: 3: 4: 5";
 
-let average = str.split(": ").reduce(function(avg, number, index) {
-   return +avg + (number - avg) / (index + 1)
-});
+const numbersInput = document.getElementById('numbersInput');
+const calculateAverageButton = document.getElementById('calculateAverageButton');
+const averageResult = document.getElementById('averageResult');
+function calculateAverage() {
+  const numbersString = numbersInput.value;
+  const numbersArray = numbersString.split(':');
+  const numbers = numbersArray.map(Number);
+  if (numbers.length > 0 && numbersArray.length > 0) {
+    const sum = numbers.reduce((acc, num) => acc + num, 0);
+    const average = sum / numbers.length;
+    averageResult.textContent = average};
+  } 
+  numbersInput.value = '';
 
-console.log(average)
+calculateAverageButton.addEventListener('click', calculateAverage);
